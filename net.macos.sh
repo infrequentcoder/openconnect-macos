@@ -54,6 +54,7 @@ configure_iface () {
 set_routes() {
   for route in $INTERNAL_ROUTES; do
     route add "$route" -iface "$TUNDEV" >/dev/null
+    echo "Added route to $route via $TUNDEV"
   done
 }
 
