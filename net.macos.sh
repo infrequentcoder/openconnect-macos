@@ -20,6 +20,9 @@
 
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 
+# Override Default DNS Domain name, if needed
+#CISCO_DEF_DOMAIN="example.com"
+
 # Override DNS servers, if needed
 #INTERNAL_IP4_DNS="10.0.0.1 10.0.0.2"
 
