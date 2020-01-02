@@ -26,8 +26,8 @@ PATH=/sbin:/usr/sbin:/bin:/usr/bin
 # Override DNS servers, if needed
 #INTERNAL_IP4_DNS="10.0.0.1 10.0.0.2"
 
-# Specify here the routes you want to add
-INTERNAL_ROUTES="10.42.0.0/24 172.31.33.0/24"
+# Specify here static internal routes
+INTERNAL_ROUTES=""
 
 # Specify here the service name, if you want to run multiple VPNs at the same time.
 SERVICE_NAME="org.foobar.myvpn"
