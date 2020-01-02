@@ -32,6 +32,20 @@ INTERNAL_ROUTES=""
 # Specify here the service name, if you want to run multiple VPNs at the same time.
 SERVICE_NAME="org.foobar.myvpn"
 
+if [ -n "$CISCO_SPLIT_INC" ]; then
+    i=0
+    while [ $i -lt $CISCO_SPLIT_INC ] ; do
+        eval NETWORK="\${CISCO_SPLIT_INC_${i}_ADDR}"
+        eval NETMASKLEN="\${CISCO_SPLIT_INC_${i}_MASKLEN}"
+        if [ -z INTERNAL_ROUTES ]; then
+            INTERNAL_ROUTES="$NETWORK/$NETMASKLEN"
+        else
+            INTERNAL_ROUTES="$NETWORK/$NETMASKLEN $INTERNAL_ROUTES"
+        fi
+        i=$(expr $i + 1)
+    done
+fi
+
 configure_iface () {
   ifconfig "$TUNDEV" inet "$INTERNAL_IP4_ADDRESS" "$INTERNAL_IP4_ADDRESS" \
     netmask 255.255.255.255 mtu ${INTERNAL_IP4_MTU:-1412} up
